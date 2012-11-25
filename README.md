@@ -1,5 +1,7 @@
 # ticthetoe
 
+[![Build Status](https://secure.travis-ci.org/enginous/tictascii.png?branch=master)](https://travis-ci.org/enginous/tictascii)
+
 Synergetically revolutionalizing mobile Tic Tac Toe in the cloud.
 
 # Design
