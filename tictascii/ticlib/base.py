@@ -11,3 +11,38 @@ class Board(object):
         """
         get_none_row = lambda length: [None for _ in range(length)]
         return [get_none_row(dimensions) for _ in range(dimensions)]
+
+    def _get_winning_marker(self, matrix):
+        """
+        Returns the winning marker for a given board matrix if a winner
+        exists for the matrix, otherwise `None`.  A winner is defined is
+        someone who has a marker across the entire board matrix.
+        """
+        matrix_indices = range(self.DIMENSIONS)
+        get_row = lambda n: matrix[n]
+        get_column = lambda n: (matrix[i][n] for i in matrix_indices)
+
+        # Create a list of marker 3-sequences
+        sequences = []
+        sequences.extend(get_row(i) for i in matrix_indices)
+        sequences.extend(get_column(i) for i in matrix_indices)
+
+        # Diagonal li from top-left to bottom-right.
+        sequences.append((matrix[i][i] for i in matrix_indices))
+
+        # Diagonal line from bottom-left to top-right.
+        sequences.append((matrix[i][(self.DIMENSIONS - 1) - i]
+                          for i in matrix_indices))
+
+        # Check whether there's any winning sequence by going through all
+        # possible sequences and determining whether they only consist of
+        # a single marker.
+        for sequence in sequences:
+            try:
+                [winning_marker] = set(sequence)  # set removes duplicates
+            except ValueError:  # unpacking error if not exactly 1 marker
+                pass  # just move on to the next sequence
+            else:
+                # don't consider `None` sequences as winners
+                if winning_marker:
+                    return winning_marker
