@@ -15,6 +15,9 @@ class Player(object):
     def get_wins(self):
         return self.games_won
 
+    def make_a_move(self):
+        raise NotImplementedError()
+
 
 class HumanPlayer(Player):
 
@@ -43,3 +46,4 @@ class ComputerPlayer(Player):
                 pass  # just retry if there's already a marker here
             else:
                 board.set_marker(self.marker, x, y)
+                return

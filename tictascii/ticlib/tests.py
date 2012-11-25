@@ -81,6 +81,10 @@ class PlayerTest(unittest.TestCase):
     def testGamesWon(self):
         self.assertEquals(self.player.get_wins(), 0)
 
+    def testMakeAMoveAsUnimplemented(self):
+        with self.assertRaises(NotImplementedError):
+            self.player.make_a_move()
+
 
 def raw_input_mock():
     return random.randint(1, 9)
