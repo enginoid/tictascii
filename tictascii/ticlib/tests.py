@@ -13,6 +13,21 @@ class BoardTest(unittest.TestCase):
         self.board = Board()
         self.player = ComputerPlayer('X')
 
+    def testBoardToString(self):
+        self.board.player_moves = [
+            ['X', 'O', 'X'],
+            ['X', None, 'X'],
+            ['X', 'X', 'O'],
+        ]
+
+        self.assertEqual(str(self.board), (
+            "   X   |   O   |   X   \n"
+            "-------+-------+-------\n"
+            "   X   | (1,1) |   X   \n"
+            "-------+-------+-------\n"
+            "   X   |   X   |   O   "
+        ))
+
     def testInitialMatrix(self):
         self.assertEquals(self.board._get_none_matrix(3), [
             [None, None, None],
