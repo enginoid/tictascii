@@ -83,8 +83,9 @@ class PlayerTest(unittest.TestCase):
         self.assertEquals(self.player.get_wins(), 0)
 
     def testMakeAMoveAsUnimplemented(self):
+        board = Board()
         with self.assertRaises(NotImplementedError):
-            self.player.make_a_move()
+            self.player.make_a_move(board)
 
 
 def raw_input_mock():

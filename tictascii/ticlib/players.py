@@ -15,7 +15,7 @@ class Player(object):
     def get_wins(self):
         return self.games_won
 
-    def make_a_move(self):
+    def make_a_move(self, board):
         raise NotImplementedError()
 
 
