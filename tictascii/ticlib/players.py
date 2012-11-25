@@ -23,15 +23,16 @@ class HumanPlayer(Player):
 
     def make_a_move(self, board):
         while True:
+            x = int(raw_input("X: "))
+            y = int(raw_input("Y: "))
+
             try:
-                x = int(raw_input("X: "))
-                y = int(raw_input("Y: "))
+                board.set_marker(self.marker, x, y)
             except MarkerOutOfRange:
                 print "The provided marker isn't within the board range."
             except MarkerExists:
                 print "A marker has already been placed at this location."
             else:
-                board.set_marker(self.marker, x, y)
                 return
 
 
@@ -39,11 +40,12 @@ class ComputerPlayer(Player):
 
     def make_a_move(self, board):
         while True:
+            x = random.randint(0, board.DIMENSIONS - 1)
+            y = random.randint(0, board.DIMENSIONS - 1)
+
             try:
-                x = random.randint(0, 3)
-                y = random.randint(0, 3)
+                board.set_marker(self.marker, x, y)
             except MarkerExists:
                 pass  # just retry if there's already a marker here
             else:
-                board.set_marker(self.marker, x, y)
                 return

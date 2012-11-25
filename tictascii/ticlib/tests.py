@@ -1,3 +1,4 @@
+from itertools import chain
 import unittest
 import random
 
@@ -96,3 +97,20 @@ class HumanPlayerTest(unittest.TestCase):
 
     def setUp(self):
         self.player = HumanPlayer('O')
+
+
+class ComputerPlayerTest(unittest.TestCase):
+
+    def setUp(self):
+        self.player = ComputerPlayer('O')
+        self.board = Board()
+
+    def testMakeAMove(self):
+        marker = self.player.marker
+        moves = chain.from_iterable(self.board.player_moves)  # flatten
+        self.assertFalse(marker in moves)
+
+        self.player.make_a_move(self.board)
+
+        moves = chain.from_iterable(self.board.player_moves)  # flatten
+        self.assertTrue(marker in moves)
