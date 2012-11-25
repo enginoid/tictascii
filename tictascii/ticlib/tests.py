@@ -2,13 +2,15 @@ import unittest
 import random
 
 from tictascii.ticlib.base import Board
-from tictascii.ticlib.players import Player, HumanPlayer
+from tictascii.ticlib.exceptions import MarkerOutOfRange, MarkerExists
+from tictascii.ticlib.players import ComputerPlayer, HumanPlayer, Player
 
 
 class BoardTest(unittest.TestCase):
 
     def setUp(self):
         self.board = Board()
+        self.player = ComputerPlayer('X')
 
     def testInitialMatrix(self):
         self.assertEquals(self.board._get_none_matrix(3), [
@@ -52,22 +54,31 @@ class BoardTest(unittest.TestCase):
             ['X', 'X', 'O'],
         ]))
 
+    def testSetMarkerOutOfRange(self):
+        with self.assertRaises(MarkerOutOfRange):
+            self.board.set_marker(self.player.marker, 4, 1)
+
+    def testSetMarkerExists(self):
+        set_marker = lambda: self.board.set_marker(self.player.marker, 2, 1)
+
+        set_marker()
+        with self.assertRaises(MarkerExists):
+            set_marker()
+
 
 class PlayerTest(unittest.TestCase):
 
     def setUp(self):
-        self.player = Player()
+        self.player = Player('O')
 
     def testInitialPlayer(self):
         self.assertEquals(self.player.get_wins(), 0)
 
     def testIncrementWins(self):
-        self.player = Player()
         self.player.increment_wins()
         self.assertEquals(self.player.get_wins(), 1)
 
     def testGamesWon(self):
-        self.player = Player()
         self.assertEquals(self.player.get_wins(), 0)
 
 
@@ -80,4 +91,4 @@ class HumanPlayerTest(unittest.TestCase):
     raw_input = raw_input_mock
 
     def setUp(self):
-        self.player = HumanPlayer()
+        self.player = HumanPlayer('O')

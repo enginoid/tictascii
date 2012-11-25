@@ -1,3 +1,6 @@
+from tictascii.ticlib.exceptions import MarkerExists, MarkerOutOfRange
+
+
 class Board(object):
     DIMENSIONS = 3
 
@@ -46,3 +49,20 @@ class Board(object):
                 # don't consider `None` sequences as winners
                 if winning_marker:
                     return winning_marker
+
+    def set_marker(self, marker, x, y):
+        """
+        Set the position (x, y) to `marker` and check for errors.
+
+        Raises:
+            MarkerOutOfRange -- if the `x` and `y` given are invalid
+            MarkerExists -- if there's already a marker at this location
+        """
+        try:
+            current_mark = self.player_moves[x][y]
+        except IndexError:
+            raise MarkerOutOfRange("This marker doesn't fit on the board.")
+        else:
+            if current_mark:
+                raise MarkerExists("This marker already exists.")
+            self.player_moves[x][y] = marker

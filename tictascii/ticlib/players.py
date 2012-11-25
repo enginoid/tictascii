@@ -1,10 +1,12 @@
 
 import random
+from tictascii.ticlib.exceptions import MarkerOutOfRange, MarkerExists
 
 
 class Player(object):
 
-    def __init__(self):
+    def __init__(self, marker):
+        self.marker = marker
         self.games_won = 0
 
     def increment_wins(self):
@@ -17,18 +19,27 @@ class Player(object):
 class HumanPlayer(Player):
 
     def make_a_move(self, board):
-        move = 0
-        while not board.validate_input(move):
-            move = raw_input("Make yo' move: ")
-            if not board.validate_input(move):
-                move = raw_input("Illegal input - try again: ")
-        board.set_mark(move)
+        while True:
+            try:
+                x = int(raw_input("X: "))
+                y = int(raw_input("Y: "))
+            except MarkerOutOfRange:
+                print "The provided marker isn't within the board range."
+            except MarkerExists:
+                print "A marker has already been placed at this location."
+            else:
+                board.set_marker(self.marker, x, y)
+                return
 
 
 class ComputerPlayer(Player):
 
     def make_a_move(self, board):
-        move = random.randint(1, 9)
-        while not board.validate_input(move):
-            move = random.randint(1, 9)
-        board.set_mark(move)
+        while True:
+            try:
+                x = random.randint(0, 3)
+                y = random.randint(0, 3)
+            except MarkerExists:
+                pass  # just retry if there's already a marker here
+            else:
+                board.set_marker(self.marker, x, y)
