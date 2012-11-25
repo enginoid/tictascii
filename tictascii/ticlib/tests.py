@@ -107,10 +107,12 @@ class ComputerPlayerTest(unittest.TestCase):
 
     def testMakeAMove(self):
         marker = self.player.marker
-        moves = chain.from_iterable(self.board.player_moves)  # flatten
+        flatten = chain.from_iterable
+
+        moves = flatten(self.board.player_moves)
         self.assertFalse(marker in moves)
 
         self.player.make_a_move(self.board)
 
-        moves = chain.from_iterable(self.board.player_moves)  # flatten
+        moves = flatten(self.board.player_moves)
         self.assertTrue(marker in moves)
