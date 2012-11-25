@@ -88,13 +88,7 @@ class PlayerTest(unittest.TestCase):
             self.player.make_a_move(board)
 
 
-def raw_input_mock():
-    return random.randint(1, 9)
-
-
 class HumanPlayerTest(unittest.TestCase):
-
-    raw_input = raw_input_mock
 
     def setUp(self):
         self.player = HumanPlayer('O')
