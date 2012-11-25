@@ -1,3 +1,4 @@
+from itertools import chain, cycle
 import string
 from tictascii.ticlib.exceptions import MarkerExists, MarkerOutOfRange
 
@@ -93,6 +94,25 @@ class Board(object):
                 if winning_marker:
                     return winning_marker
 
+    def _is_game_over(self, matrix):
+        """
+        Returns `True` if the game is over, either because all rows have been
+        filled (a tie), or because there is a winning marker.
+        """
+        rows = self._get_rows(matrix)
+        if all(chain.from_iterable(rows)):
+            return True
+
+        if self._get_winning_marker(matrix):
+            return True
+
+    @property
+    def is_game_over(self):
+        return self._is_game_over(self.player_moves)
+
+    def get_winning_marker(self):
+        return self._get_winning_marker(self.player_moves)
+
     def set_marker(self, marker, x, y):
         """
         Set the position (x, y) to `marker` and check for errors.
@@ -109,3 +129,45 @@ class Board(object):
             if current_mark:
                 raise MarkerExists("This marker already exists.")
             self.player_moves[x][y] = marker
+
+
+class Tournament(object):
+    """
+    A tournament tracks statistics over a number of games and is
+    responsible for running the main game loop, `play_game`.
+    """
+
+    def __init__(self, player1, player2):
+        self.players = (player1, player2)
+
+    def _get_player_by_marker(self, marker):
+        """
+        Returns the player using a given marker.  Raises `ValueError` if
+        that doesn't happen to be exactly one player.
+        """
+        [player] = [p for p in self.players if p.marker == marker]
+        return player
+
+    def _get_winner_or_none(self, winning_marker):
+        """
+        Returns the winner of a game given a `winning_marker` or `None` if the
+        game was a tie.
+        """
+        if winning_marker:
+            winner = self._get_player_by_marker(winning_marker)
+            winner.increment_wins()
+            return winner
+        return
+
+    def play_game(self):
+        """
+        Plays a game.  Returns a `Player` instance for the winner unless
+        the game was a tie; in that case, returns `None`.  The wins for
+        the winning player are incremented.
+        """
+        board = Board()
+        for next_player in cycle(self.players):
+            next_player.make_a_move(board)
+            if board.is_game_over:
+                winning_marker = board.get_winning_marker()
+                return self._get_winner_or_none(winning_marker)

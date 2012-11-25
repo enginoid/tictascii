@@ -1,8 +1,7 @@
 from itertools import chain
 import unittest
-import random
 
-from tictascii.ticlib.base import Board
+from tictascii.ticlib.base import Board, Tournament
 from tictascii.ticlib.exceptions import MarkerOutOfRange, MarkerExists
 from tictascii.ticlib.players import ComputerPlayer, HumanPlayer, Player
 
@@ -126,3 +125,21 @@ class ComputerPlayerTest(unittest.TestCase):
 
         moves = flatten(self.board.player_moves)
         self.assertTrue(marker in moves)
+
+
+class TournamentTest(unittest.TestCase):
+    def setUp(self):
+        self.player1 = ComputerPlayer('X')
+        self.player2 = ComputerPlayer('O')
+        self.tournament = Tournament(self.player1, self.player2)
+
+    def testPlayedGameEnds(self):
+        winner = None
+        while not winner:
+            winner = self.tournament.play_game()
+        self.assertEquals(1, winner.games_won)
+
+    def testGetWinnerOrNone(self):
+        self.assertIs(self.tournament._get_winner_or_none(None), None)
+        self.assertIs(self.tournament._get_winner_or_none('O'),
+                      self.player2)
