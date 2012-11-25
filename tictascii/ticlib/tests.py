@@ -88,14 +88,14 @@ class PlayerTest(unittest.TestCase):
         self.player = Player('O')
 
     def testInitialPlayer(self):
-        self.assertEquals(self.player.get_wins(), 0)
+        self.assertEquals(self.player.games_won, 0)
 
     def testIncrementWins(self):
         self.player.increment_wins()
-        self.assertEquals(self.player.get_wins(), 1)
+        self.assertEquals(self.player.games_won, 1)
 
     def testGamesWon(self):
-        self.assertEquals(self.player.get_wins(), 0)
+        self.assertEquals(self.player.games_won, 0)
 
     def testMakeAMoveAsUnimplemented(self):
         board = Board()
