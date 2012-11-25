@@ -81,4 +81,3 @@ class HumanPlayerTest(unittest.TestCase):
 
     def setUp(self):
         self.player = HumanPlayer()
-
