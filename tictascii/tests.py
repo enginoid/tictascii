@@ -1,4 +1,5 @@
 from ticlib.players import HumanPlayer, ComputerPlayer
+from ticlib.base import Tournament, Board
 from tictascii import get_participating_players
 
 import unittest
