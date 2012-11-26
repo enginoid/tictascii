@@ -11,6 +11,7 @@ To run this project, you will need the following:
 
 * A Linux system.
 * Python 2.7.
+* ``make``
 * ``pip`` (optional, but recommended)
 * ``virtualenv`` (optional, but recommended)
 
