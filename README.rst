@@ -19,7 +19,7 @@ Quick start
 
 For a system-wide installation::
 
-    # easy_install tictascii   # install (as root)
+    $ easy_install tictascii   # install (as root, unless in a virtualenv)
     $ ticli.py                 # run
 
 Installation
