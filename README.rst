@@ -144,3 +144,18 @@ to the following:
 10. If you opted for pull requests, asssign to another project member and wait
     until that project member merges your changes.
 11. Repeat process for next change.
+
+Releasing a stable version
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A mechanism exists to release a stable version of a package to the Python
+package repository, PyPi (using tools such as ``easy_install`` or ``pip``).
+Authorized individuals can release stable versions using a simple web
+interface on PythonPackages.com.  This takes care of the following:
+
+* Creates a git tag with the current version.
+* Makes the code downloadble via GitHub (e.g. as 0.3.1.zip).
+* Builds a Python package.
+* Uploads the package to the PiPy repository.
+
+This should be done after every version change.
