@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='tictascii',
-    version='0.0.1',
+    version='0.0.2',
     author='Free Riders',
     author_email='fred+freeriders@pyth.net',
     packages=['tictascii', 'tictascii.ticlib'],
