@@ -44,6 +44,21 @@ Developing
 To develop for this project, you'll need to be aware of the development tools
 and processes use to create cutting-edge Tic Tac Toe features.
 
+Building
+~~~~~~~~
+
+To create an installable ZIP bundle from the source, run ``make build``. This
+will run all the tests and proceed to create a ``.zip`` in the directory
+``tictascii-dist`` that resides as a sibling to the working directory,
+``tictascii``.  From within the working directory, run::
+
+    $ make build
+
+You can then unbundle the zip to view the source code, or install it using
+the following command (given version 0.0.2 as specified in ``setup.py``)::
+
+    $ easy_install ../tictascii-dist/tictascii-0.0.2.zip
+
 Additional prerequisites
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
