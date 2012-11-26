@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from ticlib.players import HumanPlayer, ComputerPlayer
 from ticlib.base import Tournament, Board
 
