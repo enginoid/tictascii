@@ -70,10 +70,10 @@ who want to contribute code can submit their patches using the GitHub
 Checking out the code
 ~~~~~~~~~~~~~~~~~~~~~
 
-To check out the code, clone the ``git@github.com:enginous/tictascii.git``
+To check out the code, clone the ``https://github.com/enginous/tictascii.git``
 git repository.  In a Linux shell, you can do this like so::
 
-    $ git clone git@github.com:enginous/tictascii.git
+    $ git clone https://github.com/enginous/tictascii.git
 
 Installing required packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
