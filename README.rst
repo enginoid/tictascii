@@ -17,11 +17,11 @@ Installation
 ============
 
 You can install the latest released version of the package by running
-`pip install tictascii`.
+``pip install tictascii``.
 
 We recommend installing the package within a virtualenv, in order to
 install the project using virtualenv, you'll have to create an environment
-with the `virtualenv` command::
+with the ``virtualenv`` command::
 
     $ cd ~/virtualenvs  # any directory will do
     $ virtualenv tictascii  # create a virtual environment
@@ -30,7 +30,7 @@ with the `virtualenv` command::
 
 Packages inside this environment do not require you to install any packages
 into the system-level Python instance.  As a corollary, you won't have to run
-`sudo` to assume root privileges at any point when working with this project.
+``sudo`` to assume root privileges at any point when working with this project.
 
 Running
 =======
@@ -60,7 +60,7 @@ who want to contribute code can submit their patches using the GitHub
 Checking out the code
 ~~~~~~~~~~~~~~~~~~~~~
 
-To check out the code, clone the `git@github.com:enginous/tictascii.git`
+To check out the code, clone the ``git@github.com:enginous/tictascii.git``
 git repository.  In a Linux shell, you can do this like so::
 
     $ git clone git@github.com:enginous/tictascii.git
@@ -80,9 +80,9 @@ Running tests
 
 Tests are considered to be successful if all of the following critera are met:
 
-* All Python tests (as found by the `nose` module) run without errors or
+* All Python tests (as found by the ``nose`` module) run without errors or
   failures.
-* Code is PEP-8 compliant (as determined by the `pep8` module).
+* Code is PEP-8 compliant (as determined by the ``pep8`` module).
 
 Automatic continuous integration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,7 +90,7 @@ Automatic continuous integration
 .. image:: https://secure.travis-ci.org/enginous/tictascii.png?branch=master
 
 Builds are run using Travis.  Every time a commit is made into the repository,
-Travis runs the `make test` command to ensure that the build passes.
+Travis runs the ``make test`` command to ensure that the build passes.
 
 You can view past builds in the system at the `build system page`_.
 
@@ -104,7 +104,7 @@ to the following:
 
 0.  (Preferably create a feature branch and a corresponding pull request
     when changes have been made.)
-1.  Run `make test`.
+1.  Run ``make test``.
 2.  Add failing test.
 3.  Run tests to verify that the test fails.
 4.  Add functionality fixing failing test.
