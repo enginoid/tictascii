@@ -11,13 +11,14 @@ To run this project, you will need the following:
 
 * A Linux system.
 * Python 2.7.
-* The `virtualenv` Python package (optional, but recommended)
+* ``pip`` (optional, but recommended)
+* ``virtualenv`` (optional, but recommended)
 
 Installation
 ============
 
 You can install the latest released version of the package by running
-``pip install tictascii``.
+``easy_install tictascii`` or ``pip install tictascii``.
 
 We recommend installing the package within a virtualenv, in order to
 install the project using virtualenv, you'll have to create an environment
@@ -35,8 +36,9 @@ into the system-level Python instance.  As a corollary, you won't have to run
 Running
 =======
 
-TODO: Add this after the script is done.
-
+After you've installed the package, ``ticli.py`` can be executed from any
+directory as long as your Python is installed correctly (specifically,
+your Python's ``bin/`` folder must be in the path).
 
 Developing
 ==========
