@@ -1,21 +1,26 @@
-# ticthetoe
+=========
+TicTASCII
+=========
 
 [![Build Status](https://secure.travis-ci.org/enginous/tictascii.png?branch=master)](https://travis-ci.org/enginous/tictascii)
 
 Synergetically revolutionalizing mobile Tic Tac Toe in the cloud.
 
-# Design
+Design
+======
 
-## Goal
+Goal
+----
 
 The project structure should support seperation of display logic and game
 logic.  As a corollary, writing a new front end using different display
 should be trivial.
 
-## Project structure
+Project structure
+-----------------
 
 The following package structure is suggested to maintain separation
-between CLI interface and game logic.
+between CLI interface and game logic::
 
     ticthetoe/
         setup.py
@@ -30,13 +35,15 @@ between CLI interface and game logic.
                 tests.py -- unit tests
 
 
-## User interface
+User interface
+--------------
 
-### The Game Board
+The Game Board
+~~~~~~~~~~~~~~
 
 The application is a command-line program where the board is represented by
 an ASCII grid.  The following is an example of a grid as displayed to a user
-during a game of Tic Tac Toe:
+during a game of Tic Tac Toe::
 
     +-------+-------+-------+
     |       |       | X   X |
@@ -55,9 +62,12 @@ during a game of Tic Tac Toe:
 Upon seeing this board, the user (O) can place their marker by indicating a
 position in (1, 2, 4, 5, 8, 9).
 
-### Game play
+Game play
+~~~~~~~~~
 
-    1 or 2 players (1/2): 2 
+::
+
+    1 or 2 players (1/2): 2
     *** Print board ***
     Player 1 move (1-9): 1
     *** Print board ***
