@@ -14,6 +14,14 @@ To run this project, you will need the following:
 * ``pip`` (optional, but recommended)
 * ``virtualenv`` (optional, but recommended)
 
+Quick start
+===========
+
+For a system-wide installation::
+
+    # easy_install tictascii   # install (as root)
+    $ ticli.py                 # run
+
 Installation
 ============
 
