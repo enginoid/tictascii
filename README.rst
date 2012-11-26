@@ -80,9 +80,9 @@ Running tests
 
 Tests are considered to be successful if all of the following critera are met:
 
-  * All Python tests (as found by the `nose` module) run without errors or
-    failures.
-  * Code is PEP-8 compliant (as determined by the `pep8` module).
+* All Python tests (as found by the `nose` module) run without errors or
+  failures.
+* Code is PEP-8 compliant (as determined by the `pep8` module).
 
 Automatic continuous integration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,6 +96,28 @@ You can view past builds in the system at the `build system page`_.
 
 .. _`build system page`: https://travis-ci.org/enginous/tictascii
 
+The life of a TicTASCII developer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After retrieving the project, developers should work in iterations similar
+to the following:
+
+0.  (Preferably create a feature branch and a corresponding pull request
+    when changes have been made.)
+1.  Run `make test`.
+2.  Add failing test.
+3.  Run tests to verify that the test fails.
+4.  Add functionality fixing failing test.
+5.  Run tests to verify that functionality fixes test.
+6.  Repeat steps 2-4 as many times as you need to create a logical change
+    that warrants committing.
+7.  Commit changes.
+8.  Push when you have accrued enough changes to add enough functionality
+    to the project that users can benefit from it.
+9.  Ensure that the Travis build succeeds.  Fix if necessary.
+10. If you opted for pull requests, asssign to another project member and wait
+    until that project member merges your changes.
+11. Repeat process for next change.
 
 Design
 ======
@@ -176,3 +198,4 @@ Gameplay
     ---------
     Player 1 won 1 times.
     Player 2 won 0 times.
+
