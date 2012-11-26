@@ -1,6 +1,6 @@
 from itertools import chain, cycle
 import string
-from tictascii.ticlib.exceptions import MarkerExists, MarkerOutOfRange
+from .exceptions import MarkerExists, MarkerOutOfRange
 
 
 class Board(object):
@@ -137,8 +137,8 @@ class Tournament(object):
     responsible for running the main game loop, `play_game`.
     """
 
-    def __init__(self, player1, player2):
-        self.players = (player1, player2)
+    def __init__(self, players):
+        self.players = players
 
     def _get_player_by_marker(self, marker):
         """
@@ -167,7 +167,12 @@ class Tournament(object):
         """
         board = Board()
         for next_player in cycle(self.players):
+            print "Player", next_player.marker
+            print board
+            print
             next_player.make_a_move(board)
             if board.is_game_over:
                 winning_marker = board.get_winning_marker()
+                print board
+                print
                 return self._get_winner_or_none(winning_marker)

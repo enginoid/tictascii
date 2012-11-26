@@ -131,7 +131,8 @@ class TournamentTest(unittest.TestCase):
     def setUp(self):
         self.player1 = ComputerPlayer('X')
         self.player2 = ComputerPlayer('O')
-        self.tournament = Tournament(self.player1, self.player2)
+        self.players = (self.player1, self.player2)
+        self.tournament = Tournament(self.players)
 
     def testPlayedGameEnds(self):
         winner = None
