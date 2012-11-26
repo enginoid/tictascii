@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from ticlib.players import HumanPlayer, ComputerPlayer
-from ticlib.base import Tournament, Board
+from tictascii.ticlib.players import HumanPlayer, ComputerPlayer
+from tictascii.ticlib.base import Tournament, Board
 
 
 def get_participating_players(raw_input=raw_input):
